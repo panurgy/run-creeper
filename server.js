@@ -14,24 +14,29 @@ app.post('/search', function(req, res, next) {
     var query = req.body;
     if (!query) {
         res.status(400).send("Please provide a JSON payload with the search params.");
+        return;
     }
 
     if (! (query.fname) && ! (query.lname) ) {
         res.status(400).send("Please provide a first name and/or last name.");
+        return;
     }
 
     if (! (query.city) && ! (query.state) ) {
         query.state = 'MN';
     }
 
+    console.log("Searching for", query);
     raceSearch.search(query).then( function(data) {
         data = _.flatten(data);
-        console.log(data);
+        if (isDevMode()) {
+            console.log(data);
+        }
         res.json(data);
     })
     .catch(function(err) {
+        console.log("Error performing search", err);
         res.status(500).send(err);
-        console.log("kaboom", err);
     });
 });
 
@@ -43,7 +48,7 @@ app.listen(port, function() {
 
 
 function maybeStartLiveReload() {
-    if (process.env.NODE_ENV === 'dev') {
+    if (isDevMode()) {
         livereload = require('express-livereload');
         var dirname = process.cwd() + "/human-ui";
         livereload(app, config={watchDir:dirname});
@@ -51,3 +56,6 @@ function maybeStartLiveReload() {
     }
 }
 
+function isDevMode() {
+    return process.env.NODE_ENV === 'dev';
+}

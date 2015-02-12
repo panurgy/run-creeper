@@ -24,7 +24,9 @@ function SearchController($scope, $log, $http) {
     $scope.search = {};
 
     $scope.doSearch = function() {
-        console.log("Searching for ", $scope.search);
+        $scope.searchError = null;
+        $scope.results = null;
+        $scope.searchInProgress = true;
 
         $http.post('/search', $scope.search)
             .success(function(data, status, headers, config) {
@@ -35,7 +37,15 @@ function SearchController($scope, $log, $http) {
             .error(function(data, status, headers, config) {
                 // called asynchronously if an error occurs
                 // or server returns response with an error status.
+                $scope.searchError = {
+                    data: data,
+                    status: status
+                };
+            })
+            .finally(function() {
+                 $scope.searchInProgress = false;
             });
+
     };
 
     $scope.clearSearch = function() {
