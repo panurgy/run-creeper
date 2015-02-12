@@ -1,0 +1,36 @@
+{
+  "name": "run-creeper",
+  "version": "0.0.0",
+  "description": "Search various websites for publicly available historical info",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/panurgy/run-creeper"
+  },
+  "keywords": [
+    "Node",
+    "Request",
+    "Running",
+    "Stats"
+  ],
+  "author": "panurgy",
+  "license": "Non commercial use only",
+  "bugs": {
+    "url": "https://github.com/panurgy/run-creeper/issues"
+  },
+  "homepage": "https://github.com/panurgy/run-creeper",
+  "dependencies": {
+    "bluebird": "^2.9.7",
+    "body-parser": "^1.11.0",
+    "cheerio": "^0.18.0",
+    "express": "^4.11.2",
+    "lodash": "^3.1.0",
+    "request": "^2.53.0"
+  },
+  "devDependencies": {
+    "express-livereload": "0.0.24"
+  }
+}

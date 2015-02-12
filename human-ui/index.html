@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Run Creeper</title>
+        <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/angular_material/0.7.1/angular-material.min.css"/>
+        
+        <link rel="stylesheet" href="/index.css"/>
+        
+    </head>
+    <body ng-app="RunCreeperApp" layout="column" ng-controller="SearchCtrl">
+
+    <md-toolbar>
+      <h2 class="md-toolbar-tools">
+          <span>Run Creeper</span>
+      </h2>
+    </md-toolbar>
+
+    <div layout="column" layout-margin layout-padding
+        class="description-text">
+
+        <div flex>
+            The fastest way to search for running results!
+        </div>
+        
+        <div flex>
+        Every year, there are lots of great racing events available 
+        to participants in a wide range of abilities. The results
+        from those races are organized with easily searchable
+        human-friendly interfaces.
+        </div>
+
+        <div flex>
+        This is an <b>interface to those interfaces</b>
+        When your web browser submits a search request, the search
+        parameters are forwarded onto lots of other sites, and all
+        of the results are aggregated back to your browser.
+        </div>
+
+    </div>
+
+
+    <md-content class="md-padding">
+        <md-toolbar class="md-default">
+            <div layout="row" flex class="fill-height md-toolbar-tools" >
+                <div class="md-toolbar-item">
+                    <span>Find a participant</span>
+                </div>
+                <span flex></span>
+                <div class="md-toolbar-item">
+                    <md-button ng-click="doSearch()" class="md-raised">Search</md-button>
+                </div>
+                <div class="md-toolbar-item">
+                    <md-button ng-click="clearSearch()" class="md-raised md-warn">Clear</md-button>
+                </div>
+            </div>
+            </md-toolbar-tools>
+        </md-toolbar>
+    
+    <form name="searchForm">
+    <div layout layout-sm="column">
+        <md-input-container flex>
+            <label>First Name</label>
+            <input ng-model="search.fname"/>
+        </md-input-container>
+
+        <md-input-container flex>
+            <label>Last Name</label>
+            <input ng-model="search.lname"/>
+        </md-input-container>
+
+        <md-input-container flex>
+            <label>City</label>
+            <input ng-model="search.city"/>
+        </md-input-container>
+
+        <md-input-container flex>
+            <label>State</label>
+            <input ng-model="search.state" placeholder="MN"/>
+        </md-input-container>
+    </div>
+    </form>
+
+    </md-content>
+
+    <md-content class="md-padding" ng-if="results">
+    <div layout="row" md-primary>
+        <div flex="20">Event</div>
+        <div flex="10">Bib #</div>
+        <div flex="20">Name</div>
+        <div flex="5"></div>
+        <div flex="5">Age</div>
+        <div flex="20">City</div>
+        <div flex="5">State</div>
+        <div flex="10">Time</div>
+    </div>
+
+    <div layout="row" ng-repeat="entry in results">
+        <div flex="20">{{entry.event}}</div>
+        <div flex="10">{{entry.bib}}</div>
+        <div flex="20">{{entry.name}}</div>
+        <div flex="5">{{entry.gender}}</div>
+        <div flex="5">{{entry.age}}</div>
+        <div flex="20">{{entry.city}}</div>
+        <div flex="5">{{entry.state}}</div>
+        <div flex="10">{{entry.time}}</div>
+    </div>
+    </md-content>
+        
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular-animate.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular-aria.min.js"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.7.1/angular-material.min.js"></script>
+        
+        <script src="index.js"></script>
+        
+        <!-- The following should only be enabled when using NODE_ENV='dev' -->
+        <script src="http://localhost:35729/livereload.js"></script>
+        
+    </body>
+</html>
+
