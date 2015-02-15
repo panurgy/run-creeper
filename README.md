@@ -27,7 +27,7 @@ since [Twitter Bootstrap](http://getbootstrap.com/), I had to try out [Angular M
 
 Easy to deploy
 --
-This app can be deployed right into most PaaS providers (like (Heroku)[http://www.heroku.com])). 
+This app can be deployed right into most PaaS providers (like [Heroku](http://www.heroku.com)). 
 There may still be an instance of this app available here at http://runcreeper.herokuapp.com/
 
 
